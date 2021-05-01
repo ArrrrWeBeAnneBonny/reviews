@@ -1,7 +1,7 @@
 const faker = require('faker');
+const db = require('./index.js');
 
-
-function generateUsers() {
+async function generateUsers() {
   let reviewsData = [];
 
   let fname = faker.name.firstName();
@@ -30,7 +30,6 @@ function generateUsers() {
       let newReview = {
         reviewId: j,
         userName: `${fname} ${lname}.`,
-        email: faker.internet.email(),
         review: faker.lorem.paragraph(),
         dateCreated: faker.date.past(),
         recommended: faker.datatype.boolean(),
@@ -38,22 +37,31 @@ function generateUsers() {
         helpfulness: getRandomInt(25),
         ownerReponse: {
           response: null,
-          responseDate: null
+          responseDate: null,
+          helpfulness: null
         }
       }
       if (randResponse !== null) {
         newReview.ownerReponse.response = randResponse;
         newReview.ownerReponse.responseDate = faker.date.between(newReview.dateCreated, faker.date.recent());
+        newReview.ownerReponse.helpfulness = getRandomInt(10);
       }
       campReview.reviews.push(newReview);
     }
     reviewsData.push(campReview);
   }
-  console.log('REVIEWS DATA', reviewsData)
-  console.log("LOOKNG AT OBJECT", reviewsData[0])
+  // console.log('REVIEWS DATA', reviewsData)
+  // console.log("LOOKNG AT OBJECT", reviewsData[0])
+  db.Review.insertMany(reviewsData, (err) => {
+    if (err) {
+      console.log('error saving');
+    } else {
+      console.log('saved to db')
+    }
+  });
 }
 
-
+generateUsers();
 // let ownerReponse = ['', faker.lorem.sentence()]
 // let randResponse = ownerReponse[Math.floor(ownerReponse.length * Math.random())];
-console.log('rand TESTTT', generateUsers());
+//console.log('rand TESTTT', generateUsers());

@@ -12,9 +12,33 @@ db.once('open', () => {
 })
 
 const reviewSchema = new mongoose.Schema({
-
+  versionKey: false,
+  campId: {
+    unique: true,
+    type: Number,
+    sparse: true
+  },
+  reviews: [{
+    versionKey: false,
+    reviewId: {
+      type: Number,
+      unique: true,
+      sparse: true
+    },
+    userName: String,
+    review: String,
+    dateCreated: Date,
+    recommended: Boolean,
+    imgUrl: String,
+    helpfulness: Number,
+    ownerReponse: {
+      response: String,
+      responseDate: Date,
+      helpfulness: Number
+    }
+  }]
 });
 
 const Review = mongoose.model('Review', reviewSchema);
 
-module.exports = db;
+module.exports = {db, Review};
