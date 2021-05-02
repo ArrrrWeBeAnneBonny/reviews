@@ -12,18 +12,19 @@ db.once('open', () => {
 })
 
 const reviewSchema = new mongoose.Schema({
-  versionKey: false,
+  //versionKey: false,
   campId: {
     unique: true,
-    type: Number,
-    sparse: true
+    type: Number
+    //sparse: true
   },
+  recommendedPer: Number,
   reviews: [{
-    versionKey: false,
+    //versionKey: false,
     reviewId: {
       type: Number,
-      unique: true,
-      sparse: true
+      unique: true
+      //sparse: true
     },
     userName: String,
     review: String,
