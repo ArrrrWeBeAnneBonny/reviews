@@ -34,7 +34,7 @@ const reviewSchema = new mongoose.Schema({
     recommended: Boolean,
     imgUrl: String,
     helpfulness: Number,
-    ownerReponse: {
+    ownerResponse: {
       response: String,
       responseDate: Date,
       helpfulness: Number

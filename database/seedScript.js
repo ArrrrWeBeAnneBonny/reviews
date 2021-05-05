@@ -13,7 +13,7 @@ function generateUsers() {
       review: `My mates and I were sailing the open seas and heard of this campsite that had hidden gems. Booking was super easy and had great amenities! We tried to find where those darn gems were hidden but all we found were beautiful views. Overall, it was a great stay before heading back to sea. ARRR`,
       recommended: true,
       helpfulness: 5,
-      userImg: `https://i.postimg.cc/x8vnvRCp/Denise.jpg`,
+      imgUrl: 'https://i.postimg.cc/x8vnvRCp/Denise.jpg',
       dateCreated: new Date(2020, 00, 01),
       ownerResponse: {
         response: `I’m glad you enjoyed your stay. While I apologize that you weren’t able to find any actual gems I hope that you and your mates created memories that you’ll treasure.`,
@@ -28,9 +28,9 @@ function generateUsers() {
         places to hang out with numberous fire pits, horse shoe games, archery areas, and canoe or paddleboating in the pond. I would come back again.`,
         recommended: true,
         helpfulness: 7,
-        userImg: `https://i.postimg.cc/MGM53rST/turbo.jpg`,
+        imgUrl: 'https://i.postimg.cc/MGM53rST/turbo.jpg',
         dateCreated: new Date(2020, 01, 02),
-        ownerReponse: {
+        ownerResponse: {
           response: `Thank you for the great review, pleasure hosting you!`,
           responseDate: new Date(2020, 02, 05),
           helpfulness: 3
@@ -42,9 +42,9 @@ function generateUsers() {
         review: `We love the place... We drove all the way from SF Bay Area, it was worth the 4 hour drive. Adriane & Ethan were so helpful and took good care of us. The tents are very comfortable and you can easily kill time enjoying the nature, boating, horse ridding and enjoying the venue. Definitively returning back with more friends soon.`,
         recommended: true,
         helpfulness: 4,
-        userImg: `https://i.postimg.cc/J4Dy9wFj/Hannah.jpg`,
+        imgUrl: 'https://i.postimg.cc/J4Dy9wFj/Hannah.jpg',
         dateCreated: new Date(2020, 05, 25),
-        ownerReponse: {
+        ownerResponse: {
           response: `Thank you for the great review, pleasure hosting you!`,
           responseDate: new Date(2020, 06, 03),
           helpfulness: 0
@@ -55,9 +55,9 @@ function generateUsers() {
         review: `I came here for some peace and quite away from the city. However, I couldn't get a wink of sleep my whole stay here. There were 3 pirate ladies camping next to me and they were making a ruckus and chit chatting all night!! I will not be staying here ever again!!`,
         recommended: false,
         helpfulness: 0,
-        userImg: `https://i.postimg.cc/vBX4rbN6/Michael.jpg`,
+        imgUrl: 'https://i.postimg.cc/vBX4rbN6/Michael.jpg',
         dateCreated: new Date(2020, 05, 28),
-        ownerReponse: {
+        ownerResponse: {
           response: null,
           responseDate: null,
           helpfulness: null,
@@ -91,20 +91,20 @@ function generateUsers() {
         recommended: faker.datatype.boolean(),
         imgUrl: faker.internet.avatar(),
         helpfulness: getRandomInt(25),
-        ownerReponse: {
+        ownerResponse: {
           response: null,
           responseDate: null,
           helpfulness: null
         }
       }
 
-      let ownerReponse = [null, faker.lorem.sentence()]
-      let randResponse = ownerReponse[Math.floor(ownerReponse.length * Math.random())];
+      let ownerResponed = [null, faker.lorem.sentence()]
+      let randResponse = ownerResponed[Math.floor(ownerResponed.length * Math.random())];
 
       if (randResponse !== null) {
-        newReview.ownerReponse.response = randResponse;
-        newReview.ownerReponse.responseDate = faker.date.between(newReview.dateCreated, faker.date.recent());
-        newReview.ownerReponse.helpfulness = getRandomInt(10);
+        newReview.ownerResponse.response = randResponse;
+        newReview.ownerResponse.responseDate = faker.date.between(newReview.dateCreated, faker.date.recent());
+        newReview.ownerResponse.helpfulness = getRandomInt(10);
       }
       campReview.reviews.push(newReview);
     }
