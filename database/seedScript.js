@@ -17,7 +17,7 @@ function generateUsers() {
       dateCreated: new Date(2020, 00, 01),
       ownerResponse: {
         response: `I’m glad you enjoyed your stay. While I apologize that you weren’t able to find any actual gems I hope that you and your mates created memories that you’ll treasure.`,
-  	    reponseDate: new Date(2020, 01, 01),
+  	    responseDate: new Date(2020, 01, 01),
   	    helpfulness: 2
       }
     },
@@ -39,7 +39,7 @@ function generateUsers() {
       {
         reviewId: 2,
         userName: `Hannah M.`,
-        review: `We love the place... We drove all the way from SF Bay Area, it was worth the 4 hour drive. Adriane & Ethan were so helpful and took good care of us. The tents are very comfortable and you can easily kill time enjoying the nature, boating, horse ridding and enjoying the venue. Definitively returning back with more friends soon.`,
+        review: `We love the place... We drove all the way from SF Bay Area, it was worth the 4 hour drive. Anne was so helpful and took good care of us. The tents are very comfortable and you can easily kill time enjoying the nature, boating, horse ridding and enjoying the venue. Definitively returning back with more friends soon.`,
         recommended: true,
         helpfulness: 4,
         imgUrl: 'https://i.postimg.cc/J4Dy9wFj/Hannah.jpg',
@@ -71,7 +71,7 @@ function generateUsers() {
 
   let randReviews = Math.floor(Math.random() * 10);
 
-  for (var id = 1; id <= 10; id++) {
+  for (var id = 1; id <= 99; id++) {
 
     let campReview = {
       campId: id,

@@ -7,15 +7,30 @@ app.use(express.static(__dirname + '/../client/public'))
 
 app.get('/reviews', (req, res) => {
   console.log('inside get reviews');
-  db.Review.find({campId: 0})
+  db.Review.find({})
     .then((data) => {
-      let result = [];
-      //console.log('data', data[0]._doc)
-      for (var i = 0; i < data.length; i++) {
-        let currDoc = data[i];
-        console.log('curr', currDoc._doc.reviews[0]._doc);
-        console.log('data', data)
+
+      let result = {};
+      let list = [];
+
+      let doc = data[0]._doc;
+      //console.log('data', doc.reviews[0]);
+      if (doc.reviews.length === 0) {
+        result.reviews = list;
+        res.status(200).send(result);
+      } else {
+        result.recommendedPer = doc.recommendedPer;
+
+        doc.reviews.forEach((item) => {
+          list.push(item._doc);
+        });
+
+        result.reviews = list;
+        //console.log('send', send)
+        res.status(200).send(result);
+
       }
+
     })
 });
 
