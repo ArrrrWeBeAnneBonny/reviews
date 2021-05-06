@@ -7,14 +7,15 @@ app.use(express.static(__dirname + '/../client/public'))
 
 app.get('/reviews', (req, res) => {
   console.log('inside get reviews');
-  db.Review.find({})
+  db.Review.find({campId: 0})
     .then((data) => {
 
       let result = {};
       let list = [];
 
       let doc = data[0]._doc;
-      //console.log('data', doc.reviews[0]);
+      //console.log('doc', Object.keys(data[0]))
+      //console.log('data', doc.reviews);
       if (doc.reviews.length === 0) {
         result.reviews = list;
         res.status(200).send(result);

@@ -4,29 +4,26 @@ const mongoose = require('mongoose');
 const uri = 'mongodb://localhost/reviewsDB';
 
 mongoose.connect(uri);
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('connected to reviews DB')
-})
+});
 
 const reviewSchema = new mongoose.Schema({
-  //versionKey: false,
   campId: {
     unique: true,
-    type: Number
-    //sparse: true
+    type: Number,
+    sparse: true
   },
   recommendedPer: Number,
   reviews: [{
-    //versionKey: false,
     reviewId: {
       type: Number,
       unique: true
-      //sparse: true
     },
     userName: String,
     review: String,
@@ -41,6 +38,8 @@ const reviewSchema = new mongoose.Schema({
     }
   }]
 });
+
+
 
 const Review = mongoose.model('Review', reviewSchema);
 

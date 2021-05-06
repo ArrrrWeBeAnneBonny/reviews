@@ -71,7 +71,7 @@ function generateUsers() {
 
   let randReviews = Math.floor(Math.random() * 10);
 
-  for (var id = 1; id <= 99; id++) {
+  for (var id = 1; id <= 10; id++) {
 
     let campReview = {
       campId: id,
