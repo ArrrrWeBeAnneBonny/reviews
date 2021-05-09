@@ -1,0 +1,22 @@
+#container {
+
+  column-width: 10em;
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+.review-item {
+  width: 20%;
+}
+
+.userUrl {
+  border-radius: 50px;
+  display: table-cell;
+  vertical-align: top;
+}
+
+/* .userName {
+  float: left;
+} */

@@ -1,13 +1,12 @@
-# Project Name
+# reviews-service
 
-> Project description
+> reviews service for HipCamp
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/ArrrrWeBeAnneBonny/booking
+  - https://github.com/ArrrrWeBeAnneBonny/photogallery
+  - https://github.com/ArrrrWeBeAnneBonny/overview
 
 ## Table of Contents
 
@@ -17,7 +16,9 @@
 
 ## Usage
 
-> Some usage instructions
+> To get started, run the following commands:
+  - npm run seed: generates data for your database
+  - npm run start: start the server
 
 ## Requirements
 
@@ -33,7 +34,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
+npm install -g nodemon
 npm install
 ```
 
