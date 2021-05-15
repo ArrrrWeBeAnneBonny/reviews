@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const uri = 'mongodb://localhost/reviewsDB';
 
 mongoose.connect(uri);
-//mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
 
@@ -38,8 +37,6 @@ const reviewSchema = new mongoose.Schema({
     }
   }]
 });
-
-
 
 const Review = mongoose.model('Review', reviewSchema);
 

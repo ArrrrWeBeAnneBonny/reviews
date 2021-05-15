@@ -15,6 +15,7 @@ class Reviews extends React.Component {
     $.ajax({
       url: '/reviews',
       method: 'GET',
+      data: {campId: 0},
       success: (data) => {
         console.log('got data in client', data);
         this.setState({
@@ -47,3 +48,5 @@ class Reviews extends React.Component {
 }
 
 ReactDOM.render(<Reviews/>, document.getElementById('app'));
+
+export default Reviews;
