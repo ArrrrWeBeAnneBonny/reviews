@@ -2,6 +2,7 @@
 
 const faker = require('faker');
 const db = require('./index.js');
+const helper = require('./helper.js');
 
 function generateUsers() {
   let reviewsData = [{
@@ -14,10 +15,10 @@ function generateUsers() {
       recommended: true,
       helpfulness: 5,
       imgUrl: 'https://i.postimg.cc/x8vnvRCp/Denise.jpg',
-      dateCreated: new Date(2020, 00, 01),
+      dateCreated: new Date(2020, 0, 1),
       ownerResponse: {
         response: `I’m glad you enjoyed your stay. While I apologize that you weren’t able to find any actual gems I hope that you and your mates created memories that you’ll treasure.`,
-  	    responseDate: new Date(2020, 01, 01),
+  	    responseDate: new Date(2020, 1, 1),
   	    helpfulness: 2
       }
     },
@@ -29,10 +30,10 @@ function generateUsers() {
         recommended: true,
         helpfulness: 7,
         imgUrl: 'https://i.postimg.cc/MGM53rST/turbo.jpg',
-        dateCreated: new Date(2020, 01, 02),
+        dateCreated: new Date(2020, 1, 2),
         ownerResponse: {
           response: `Thank you for the great review, pleasure hosting you!`,
-          responseDate: new Date(2020, 02, 05),
+          responseDate: new Date(2020, 2, 5),
           helpfulness: 3
         }
       },
@@ -43,10 +44,10 @@ function generateUsers() {
         recommended: true,
         helpfulness: 4,
         imgUrl: 'https://i.postimg.cc/J4Dy9wFj/Hannah.jpg',
-        dateCreated: new Date(2020, 05, 25),
+        dateCreated: new Date(2020, 5, 25),
         ownerResponse: {
           response: `Thank you for the great review, pleasure hosting you!`,
-          responseDate: new Date(2020, 06, 03),
+          responseDate: new Date(2020, 6, 3),
           helpfulness: 0
         }
       }, {
@@ -56,7 +57,7 @@ function generateUsers() {
         recommended: false,
         helpfulness: 0,
         imgUrl: 'https://i.postimg.cc/vBX4rbN6/Michael.jpg',
-        dateCreated: new Date(2020, 05, 28),
+        dateCreated: new Date(2020, 5, 28),
         ownerResponse: {
           response: null,
           responseDate: null,
@@ -71,7 +72,7 @@ function generateUsers() {
 
   let randReviews = Math.floor(Math.random() * 10);
 
-  for (var id = 1; id <= 10; id++) {
+  for (var id = 1; id <= 99; id++) {
 
     let campReview = {
       campId: id,
@@ -108,7 +109,7 @@ function generateUsers() {
       }
       campReview.reviews.push(newReview);
     }
-    campReview.recommendedPer = percentCalc(campReview.reviews);
+    campReview.recommendedPer = helper.percentCalc(campReview.reviews);
     reviewsData.push(campReview);
   }
 
@@ -122,22 +123,4 @@ function generateUsers() {
   db.db.close();
 }
 
-let percentCalc = (reviews) => {
-
-  let recommended = 0;
-  let percent;
-
-  if (reviews.length === 0) {
-    return null;
-  } else {
-    for (var i = 0; i < reviews.length; i++) {
-      let currReview = reviews[i];
-      if (currReview.recommended === true) {
-        recommended++;
-      }
-    }
-    percent = (recommended / reviews.length).toString().slice(0, 4);
-    return Number(percent);
-  }
-}
 generateUsers();
