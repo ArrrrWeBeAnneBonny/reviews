@@ -1,13 +1,17 @@
 const express = require('express');
 const db = require('../database/index.js');
 const axios = require('axios');
+ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3001;
 
+app.use(cors());
 app.use(express.static(__dirname + '/../client/public'));
 //app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+//const origins = ['http://localhost:3000'];
 
 app.get('/reviews', (req, res) => {
   console.log('inside get reviews', req.query);
