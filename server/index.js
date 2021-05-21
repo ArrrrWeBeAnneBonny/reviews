@@ -35,7 +35,7 @@ app.get('/reviews', (req, res) => {
         });
 
         result.reviews = list;
-        //console.log('send', send)
+        //console.log('send', result)
         res.status(200).send(result);
 
       }
