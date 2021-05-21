@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import ReviewList from './ReviewList.jsx'
+import ReviewList from './ReviewList.jsx';
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Reviews extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: '/reviews',
+      url: 'http://localhost:3000/reviews',
       method: 'GET',
       data: {campId: 0},
       success: (data) => {

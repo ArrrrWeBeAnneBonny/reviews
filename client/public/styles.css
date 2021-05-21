@@ -6,20 +6,19 @@
   grid-template-columns: 1fr;
   grid-gap: 10px; */
   /* width: 60%;
-} */ */
+} */
 
  /* .review-item {
   width: 20%;
-} */ */
+} */
 
-/* #review-header {
+#review-header {
 
-  /* display: flex;
+  display: flex;
   justify-content: space-between;
-  flex-direction: row;
   /* width: 50%;
-  clear: both; */ */
-/* } */ */
+  clear: both; */
+}
 
 #reviewnum {
   font-weight: bold;
@@ -29,10 +28,23 @@
   float: right;
 }
 
+.thumbs {
+  background-color: #40D9ac;
+  color: white;
+  border-radius: 25px;
+  width: 25px;
+  height: 25px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
 .userUrl {
-  border-radius: 50px;
+  border-radius: 50%;
   display: table-cell;
   vertical-align: top;
+  width: 75px;
+  height: 75px;
 }
 
 .username {
@@ -64,7 +76,8 @@
   float: left;
   padding: 10px;
   height: auto;
-  width: 10%;
+  width: 5%;
+  font-family: calibri;
 }
 
 .column2 {
@@ -76,7 +89,11 @@
 
 .info {
   display: flex;
-  justify-content: space-between;
+  font-family: calibri;
+}
+
+.date {
+  float: right;
 }
 
 .row:after {
