@@ -102,3 +102,7 @@
   clear: both;
   display:flex;
 }
+
+.owner-helpfulness {
+  color: #40D9A3;
+}

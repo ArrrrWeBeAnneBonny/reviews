@@ -9,14 +9,14 @@ class Reviews extends React.Component {
     super();
     this.state = {
       list: [],
-      sorted: 'Most Popular'
+      sortOption: 'Most Popular'
     }
     this.sortReviews = this.sortReviews.bind(this);
   }
 
   componentDidMount() {
-    let search = window.location.search
-    console.log('url', search);
+    // let search = window.location.search
+    // console.log('url', search);
 
     $.ajax({
       url: `http://localhost:3001/reviews`,
@@ -24,11 +24,12 @@ class Reviews extends React.Component {
       data: {campId: 0},
       success: (data) => {
         console.log('got data in client', data);
+        let reviewsList = helpers.sortReviews(data.reviews, 'Most popular');
         this.setState({
-          list: data.reviews
+          list: reviewsList
         });
-        console.log('state', this.state)
-        //this.render();
+        //console.log('state', this.state)
+
       },
       error: (err) => {
         console.log('error getting data in client');
@@ -39,31 +40,29 @@ class Reviews extends React.Component {
   sortReviews () {
     console.log('sorting');
     var option = document.getElementById('sort').value;
-    let hi = helpers.mostRecent(this.state.list);
+
     //console.log('e', option)
-    console.log('hi', hi)
+
+    let sortList = helpers.sortReviews(this.state.list, option);
+    //console.log('sorted', sortList);
+
     this.setState({
-      sorted: option,
-      list: hi
+      sortOption: option,
+      list: sortList
     })
-    console.log('update', this.state.sorted)
+
+    //console.log('update', this.state.sortOption)
   }
 
 
   render() {
     //let reviews = this.state.reviews;
-    console.log('reviews', this.state.list)
-
-        return (
-          <div className='review'>
-            <ReviewList list={this.state.list} sort={this.sortReviews} sorted={this.state.sorted}/>
-          </div>
-
-       )
-
-
-
-
+    //console.log('reviews', this.state.list)
+    return (
+      <div className='review'>
+        <ReviewList list={this.state.list} sort={this.sortReviews} sorted={this.state.sorted}/>
+      </div>
+    )
   }
 }
 
