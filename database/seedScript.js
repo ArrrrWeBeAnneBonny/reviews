@@ -53,7 +53,7 @@ function generateUsers() {
       }, {
         reviewId: 3,
         userName: `Michael G.`,
-        review: `I came here for some peace and quite away from the city. However, I couldn't get a wink of sleep my whole stay here. There were 3 pirate ladies camping next to me and they were making a ruckus and chit chatting all night!! I will not be staying here ever again!!`,
+        review: `I came here for some peace and quiet away from the city. However, I couldn't get a wink of sleep my whole stay here. There were 3 pirate ladies camping next to me and they were making a ruckus and chit chatting all night!! I will not be staying here ever again!!`,
         recommended: false,
         helpfulness: 0,
         imgUrl: 'https://i.postimg.cc/vBX4rbN6/Michael.jpg',
@@ -76,7 +76,7 @@ function generateUsers() {
 
     let campReview = {
       campId: id,
-      recommendedPer: null,
+      recommendedPer: 0,
       reviews: []
     };
 
