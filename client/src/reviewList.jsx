@@ -1,5 +1,6 @@
 import React from 'react';
 var moment = require('moment');
+
 //import {Grid, Image, Divider} from 'semantic-ui-react';
 
 function ReviewList(props) {
@@ -9,7 +10,7 @@ function ReviewList(props) {
 
       <div id="review-header">
         <div id="reviewnum">{`${props.list.length} Reviews`}
-        <select id="sort">
+        <select id="sort" value={props.sorted} onChange={props.sort}>
             <option value="Most popular">Most popular</option>
             <option value="Most recent">Most recent</option>
           </select>
@@ -20,7 +21,7 @@ function ReviewList(props) {
 
 
       {props.list.map((item) => {
-        console.log('owner', item)
+        console.log('owner')
          return (
           <div className="row">
             <div className="column1">

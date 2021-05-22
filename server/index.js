@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //const origins = ['http://localhost:3000'];
 
-app.get('/reviews', (req, res) => {
+app.get('/reviews?:campId', (req, res) => {
   console.log('inside get reviews', req.query);
   let campSite = req.query.campId;
   db.Review.find({campId: campSite})
@@ -40,6 +40,10 @@ app.get('/reviews', (req, res) => {
 
       }
 
+    })
+    .catch((err) =>{
+      console.log('error getting reviews');
+      res.send({});
     })
 });
 
