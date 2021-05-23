@@ -2,27 +2,34 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import ReviewList from './ReviewList.jsx';
+import helpers from './helpers.js';
 
 class Reviews extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      list: []
+      list: [],
+      sortOption: 'Most Popular'
     }
+    this.sortReviews = this.sortReviews.bind(this);
   }
 
   componentDidMount() {
+    // let search = window.location.search
+    // console.log('url', search);
+
     $.ajax({
-      url: 'http://localhost:3000/reviews',
+      url: `http://localhost:3001/reviews`,
       method: 'GET',
       data: {campId: 0},
       success: (data) => {
         console.log('got data in client', data);
+        let reviewsList = helpers.sortReviews(data.reviews, 'Most popular');
         this.setState({
-          list: data.reviews
+          list: reviewsList
         });
-        console.log('state', this.state)
-        //this.render();
+        //console.log('state', this.state)
+
       },
       error: (err) => {
         console.log('error getting data in client');
@@ -30,20 +37,32 @@ class Reviews extends React.Component {
     })
   }
 
+  sortReviews () {
+    console.log('sorting');
+    var option = document.getElementById('sort').value;
+
+    //console.log('e', option)
+
+    let sortList = helpers.sortReviews(this.state.list, option);
+    //console.log('sorted', sortList);
+
+    this.setState({
+      sortOption: option,
+      list: sortList
+    })
+
+    //console.log('update', this.state.sortOption)
+  }
+
+
   render() {
     //let reviews = this.state.reviews;
-    console.log('reviews', this.state.list)
-
-        return (
-          <div className='review'>
-            <ReviewList list={this.state.list}/>
-          </div>
-
-       )
-
-
-
-
+    //console.log('reviews', this.state.list)
+    return (
+      <div className='review'>
+        <ReviewList list={this.state.list} sort={this.sortReviews} sorted={this.state.sorted}/>
+      </div>
+    )
   }
 }
 
