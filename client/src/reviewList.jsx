@@ -1,7 +1,6 @@
 import React from 'react';
-var moment = require('moment');
-
-//import {Grid, Image, Divider} from 'semantic-ui-react';
+const moment = require('moment');
+const helpers = require('./helpers.js');
 
 function ReviewList(props) {
   console.log('props', props)
@@ -30,22 +29,20 @@ function ReviewList(props) {
             <div className="column2">
               <div className="info">
 
-                <div className="thumbs"><i className="fas fa-thumbs-up"></i></div>
+                <div className="thumbs"><i className={helpers.displayThumbs(item.recommended)}></i></div>
                 <div className="username">{item.userName}</div>
-                <div className="recommend"> recommends this listing. (Site 1)</div>
+                <div className="recommend">{helpers.isRecommended(item.recommended)} (Site 1)</div>
                 <div className="date">{moment(item.dateCreated).format('MMMM Do YYYY')}</div>
               </div>
               <p className='review'>{item.review}</p>
               <div className="photos">Photos Go Here</div>
               <div></div>
               <button id="button">
-                <i className="far fa-thumbs-up"></i> Helpful {item.helpfulness}
+                <i className={"far fa-thumbs-up"}></i> Helpful {item.helpfulness}
               </button>
-              <div className="owner">
-                <div className="owner-date">{moment(item.ownerResponse.responseDate).format('MMMM Do YYYY')}</div>
-                <p>{item.ownerResponse.response}</p>
-                <div className="owner-helpfulness"><i className="far fa-thumbs-up"></i> Helpful {item.ownerResponse.helpfulness}</div>
-              </div>
+              {/* <div className="owner"> */}
+                {helpers.displayOwner(item.ownerResponse)}
+              {/* </div> */}
               <hr></hr>
             </div>
 
