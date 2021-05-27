@@ -77,7 +77,6 @@
   padding: 10px;
   height: auto;
   width: 5%;
-  font-family: calibri;
 }
 
 .column2 {
@@ -89,7 +88,6 @@
 
 .info {
   display: flex;
-  font-family: calibri;
 }
 
 .date {
@@ -101,6 +99,17 @@
   display: table;
   clear: both;
   display:flex;
+}
+
+.owner {
+  padding: 10px;
+  min-height: 80px;
+  background-color: #f9f9f9;
+  color: #757575;
+}
+
+.owner-header {
+  display: flex;
 }
 
 .owner-helpfulness {

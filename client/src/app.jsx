@@ -15,13 +15,14 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    // let search = window.location.search
-    // console.log('url', search);
+    let search = window.location.search
+    let index = search.indexOf('=') + 1;
+    let id = search.slice(index);
 
     $.ajax({
       url: `http://localhost:3001/reviews`,
       method: 'GET',
-      data: {campId: 0},
+      data: {campId: id},
       success: (data) => {
         console.log('got data in client', data);
         let reviewsList = helpers.sortReviews(data.reviews, 'Most popular');
