@@ -17,7 +17,6 @@ app.get('/reviews?:campId', (req, res) => {
   console.log('inside get reviews', req.query);
   let campSite = req.query.campId;
   db.Review.find({campId: campSite})
-    .sort({'recommended': -1})
     .then((data) => {
       let result = {};
       let list = [];

@@ -4,7 +4,7 @@ import moment from 'moment';
 module.exports = {
 
   sortReviews: (reviews, option) => {
-    console.log('sort reviews', reviews, option)
+    //console.log('sort reviews', reviews, option)
     if (option === 'Most popular') {
       return reviews.sort((a, b) => {
         //console.log('sfd', b.helpfulness, a.helpfulness)
@@ -39,13 +39,26 @@ module.exports = {
     }
     return  (
       <div>
-        <div className="owner">
+        {/* <div className="owner">
         <div className="owner-header">Response from Anne Bonny, the host on,
         <div className="owner-date">{moment(info.responseDate).format('MMMM Do YYYY')}</div>
         </div>
 
         <p className="owner-response">{info.response}</p>
         <div className="owner-helpfulness"><i className="far fa-thumbs-up"></i> Helpful {info.helpfulness}</div>
+        </div> */}
+        <div className='comment-container'>
+          <div className='comment'>
+            <div className='comment_avatar'>owner img here</div>
+            <div className='comment_body'>
+              <div className='comment_header'>Response from Anne Bonny, the Host, on {moment(info.responseDate).format('MMMM Do YYYY')}</div>
+              <p className='comment_text'>{info.response}</p>
+              <div className='helpful-container'>
+              <i className="far fa-thumbs-up"></i> Helpful {info.helpfulness}
+            </div>
+            </div>
+
+          </div>
         </div>
       </div>)
   }
