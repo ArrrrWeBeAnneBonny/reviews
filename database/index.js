@@ -1,7 +1,8 @@
 //dev2
 
 const mongoose = require('mongoose');
-const uri = 'mongodb://localhost/reviewsDB';
+ const uri = 'mongodb://mongo:27017/reviewsDB';
+//const uri = 'mongodb://localhost/reviewsDB';
 
 mongoose.connect(uri);
 
