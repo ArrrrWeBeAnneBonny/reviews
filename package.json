@@ -31,8 +31,10 @@
   },
   "scripts": {
     "test": "jest --verbose false --runInBand --force-exit",
-    "start": "nodemon server/server.js database/seedScript.js",
-    "react-dev": "webpack -d --watch"
+    "start": "nodemon server/server.js",
+    "react-dev": "webpack -d --watch",
+    "seed": "database/seedScript.js",
+    "docker": "npm run start && npm run seed"
   },
   "jest": {
     "testEnvironment": "node"

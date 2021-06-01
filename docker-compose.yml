@@ -14,8 +14,6 @@ services:
     container_name: mongo
     image: mongo
     volumes:
-      - reviewsDB:/data/db
+      - ./data/db
     ports:
       - "27017:27017"
-volumes:
-    reviewsDB:
