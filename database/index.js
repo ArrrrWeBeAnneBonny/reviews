@@ -3,6 +3,8 @@
 const mongoose = require('mongoose');
 //const uri = 'mongodb://mongo:27017/reviewsDB';
 const uri = 'mongodb://localhost/reviewsDB';
+//mongoose.Promise = global.Promise;
+//const seed = require('./seedScript.js');
 
 mongoose.connect(uri);
 
@@ -40,5 +42,15 @@ const reviewSchema = new mongoose.Schema({
 });
 
 const Review = mongoose.model('Review', reviewSchema);
+
+// let seedData = async () => {
+//   db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', () => {
+//   console.log('connected to reviews DB')
+// });
+//   await seed.generateUsers();
+// }
+
+// seedData();
 
 module.exports = {db, Review};

@@ -3,6 +3,7 @@
 const faker = require('faker');
 const db = require('./index.js');
 const helper = require('./helper.js');
+//const mongoose = require('mongoose');
 
 function generateUsers() {
   let reviewsData = [{
@@ -124,3 +125,5 @@ function generateUsers() {
 }
 
 generateUsers();
+
+//module.exports = {generateUsers};
