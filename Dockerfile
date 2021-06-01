@@ -7,7 +7,6 @@
 
 # RUN npm install
 # RUN npm install nodemon --save
-# RUN npm run seed
 
 # COPY . .
 
@@ -28,4 +27,4 @@ RUN npm install nodemon --save
 COPY . .
 
 EXPOSE 3001
-CMD ["npm", "run", "docker"]
+CMD ["npm", "run", "start"]
