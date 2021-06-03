@@ -9,6 +9,7 @@ class Reviews extends React.Component {
     super();
     this.state = {
       list: [],
+      ownerInfo: {},
       sortOption: 'Most Popular'
     }
     this.sortReviews = this.sortReviews.bind(this);
@@ -20,17 +21,23 @@ class Reviews extends React.Component {
     let id = search.slice(index);
 
     $.ajax({
-      url: `http://localhost:3001/reviews`,
+      url: `http://localhost:3001/allReviews`,
       method: 'GET',
       data: {campId: id},
       success: (data) => {
-        //console.log('got data in client', data);
+        console.log('got data in client', data);
         let reviewsList;
+        let ownerObj = {};
         if (data) {
           reviewsList = helpers.sortReviews(data.reviews, 'Most popular');
+          ownerObj.ownerName = data.ownerName;
+          ownerObj.ownerUrl = data.ownerUrl;
+          ownerObj.site = data.site;
         }
+        console.log('sdgsdg', ownerObj);
         this.setState({
-          list: reviewsList
+          list: reviewsList,
+          ownerInfo: ownerObj
         });
         //console.log('state', this.state)
 
@@ -64,7 +71,7 @@ class Reviews extends React.Component {
     //console.log('reviews', this.state.list)
     return (
       <div className='review'>
-        <ReviewList list={this.state.list} sort={this.sortReviews} sorted={this.state.sortOption}/>
+        <ReviewList list={this.state.list} sort={this.sortReviews} sorted={this.state.sortOption} data={this.state.ownerInfo}/>
       </div>
     )
   }

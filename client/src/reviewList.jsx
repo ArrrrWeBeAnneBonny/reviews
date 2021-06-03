@@ -4,6 +4,8 @@ const helpers = require('./helpers.js');
 
 function ReviewList(props) {
   console.log('props', props)
+  //let allData = props.data;
+  //console.log('al', allData)
     return (
       <div id='reviews-section'>
         <div className='header'>{`${props.list.length} Reviews`}
@@ -30,7 +32,7 @@ function ReviewList(props) {
                         <span className='recommend-icon'><i className={helpers.displayThumbs(item.recommended)}></i></span>
                         <div className="username">{item.userName}</div>
                         <div className="recommend">{helpers.isRecommended(item.recommended)}</div>
-                        <div className='site'>(Site 1)</div>
+                        <div className='site'>{`Site ${props.data.site}`}</div>
                       </div>
                       <div className='info-right'>{moment(item.dateCreated).format('MMMM Do YYYY')}</div>
                     </div>
@@ -42,7 +44,7 @@ function ReviewList(props) {
                       </button>
                       {/* <div className='report'>Report</div> */}
                     </div>
-                      {helpers.displayOwner(item.ownerResponse)}
+                      {helpers.displayOwner(props)}
                     <hr></hr>
                   </div>
                 </div>

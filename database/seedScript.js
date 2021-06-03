@@ -1,11 +1,9 @@
-//dev2
-
 const faker = require('faker');
 const db = require('./index.js');
 const helper = require('./helper.js');
-//const mongoose = require('mongoose');
 
-function generateUsers() {
+async function generateUsers() {
+
   let reviewsData = [{
     campId: 0,
     recommendedPer: 0.75,
@@ -114,7 +112,7 @@ function generateUsers() {
     reviewsData.push(campReview);
   }
 
-  db.Review.insertMany(reviewsData, (err) => {
+  await db.Review.insertMany(reviewsData, (err) => {
     if (err) {
       console.log('error saving');
     } else {
@@ -125,5 +123,3 @@ function generateUsers() {
 }
 
 generateUsers();
-
-//module.exports = {generateUsers};

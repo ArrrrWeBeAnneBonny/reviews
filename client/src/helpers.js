@@ -33,8 +33,8 @@ module.exports = {
     return 'fas fa-meh'
   },
   displayOwner: (info) => {
-    //console.log('displayowner', info)
-    if (!info.response) {
+    console.log('displayowner', info)
+    if (!info) {
       return null;
     }
     return  (
@@ -47,19 +47,31 @@ module.exports = {
         <p className="owner-response">{info.response}</p>
         <div className="owner-helpfulness"><i className="far fa-thumbs-up"></i> Helpful {info.helpfulness}</div>
         </div> */}
+                      {info.list.map((item) => {
+                console.log('ITEMMM', item)
+                return (
+                  <div>
         <div className='comment-container'>
           <div className='comment'>
-            <div className='comment_avatar'>owner img here</div>
-            <div className='comment_body'>
-              <div className='comment_header'>Response from Anne Bonny, the Host, on {moment(info.responseDate).format('MMMM Do YYYY')}</div>
-              <p className='comment_text'>{info.response}</p>
-              <div className='helpful-container'>
-              <i className="far fa-thumbs-up"></i> Helpful {info.helpfulness}
+            <div className='comment_avatar'>
+              <img className='owner-url' src={info.data.ownerUrl}/>
             </div>
+            <div className='comment_body'>
+
+                  <div className='comment_header'>{`Response from ${info.data.ownerName} the Host, on ${moment(item.ownerResponse.responseDate).format('MMMM Do YYYY')}`}</div>
+                  <p className='comment_text'>{item.ownerResponse.response}</p>
+                  <div className='helpful-container'>
+                  <i className="far fa-thumbs-up"></i> Helpful {item.ownerResponse.helpfulness}
+                  </div>
+                  </div>
+
+
             </div>
 
           </div>
         </div>
+                        )
+              })}
       </div>)
   }
 
