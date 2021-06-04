@@ -24,8 +24,11 @@ class Reviews extends React.Component {
       method: 'GET',
       data: {campId: id},
       success: (data) => {
-        console.log('got data in client', data);
-        let reviewsList = helpers.sortReviews(data.reviews, 'Most popular');
+        //console.log('got data in client', data);
+        let reviewsList;
+        if (data) {
+          reviewsList = helpers.sortReviews(data.reviews, 'Most popular');
+        }
         this.setState({
           list: reviewsList
         });
@@ -40,9 +43,9 @@ class Reviews extends React.Component {
 
   sortReviews () {
     console.log('sorting');
-    var option = document.getElementById('sort').value;
+    var option = document.getElementById('sort_by').value;
 
-    //console.log('e', option)
+    console.log('e', option)
 
     let sortList = helpers.sortReviews(this.state.list, option);
     //console.log('sorted', sortList);
@@ -61,7 +64,7 @@ class Reviews extends React.Component {
     //console.log('reviews', this.state.list)
     return (
       <div className='review'>
-        <ReviewList list={this.state.list} sort={this.sortReviews} sorted={this.state.sorted}/>
+        <ReviewList list={this.state.list} sort={this.sortReviews} sorted={this.state.sortOption}/>
       </div>
     )
   }
