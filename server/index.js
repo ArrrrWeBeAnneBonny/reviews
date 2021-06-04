@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/reviews?:campId', (req, res) => {
   console.log('inside get reviews', req.query);
-  let campSite = req.query.campId;
+  let campSite = Number(req.query.campId);
   db.Review.find({campId: campSite})
     .then((data) => {
       let result = {};
