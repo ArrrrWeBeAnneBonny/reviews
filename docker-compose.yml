@@ -3,9 +3,9 @@ services:
   app:
     container_name: nodejs
     restart: always
-    build: .
+    image: djian001/reviews
     ports:
-      - "3001:3001"
+      - "80:3001"
     links:
        - mongo
     depends_on:

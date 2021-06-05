@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import ReviewList from './ReviewList.jsx';
 import helpers from './helpers.js';
+//let nodeEnv = process.env.NODE_ENV;
+// const dotenv = require('dotenv');
+// dotenv();
 
 class Reviews extends React.Component {
   constructor(props) {
@@ -16,12 +19,23 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    let search = window.location.search
+    let search = window.location.search;
+    console.log('search', search);
+    let host = window.location.host;
     let index = search.indexOf('=') + 1;
     let id = search.slice(index);
+    //let url = `http://${host}/reviews`;
+    // let url = '';
+
+    // if (nodeEnv === 'development' || !nodeEnv) {
+    //   url = helpers.urls.development;
+    // } else {
+    //   url = helpers.urls.production;
+    // }
+    // console.log('url', url, 'env', nodeEnv)
 
     $.ajax({
-      url: `http://localhost:3001/allReviews`,
+      url: 'http://ec2-54-193-152-3.us-west-1.compute.amazonaws.com/reviews',
       method: 'GET',
       data: {campId: id},
       success: (data) => {

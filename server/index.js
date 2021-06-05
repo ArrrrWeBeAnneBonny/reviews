@@ -49,7 +49,7 @@ app.get('/reviews?:campId', (req, res) => {
 });
 
 app.get('/allReviews?:campId', async (req, res) => {
-  console.log('inside get reviews', req.query);
+  console.log('inside getall reviews', req.query);
   let campSite = Number(req.query.campId);
   let overviewData = await apis.getOverview(campSite);
   console.log('ov', overviewData);

@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 //const uri = 'mongodb://mongo:27017/reviewsDB';
-const uri = 'mongodb://localhost/reviewsDB';
+//const uri = 'mongodb://localhost/reviewsDB';
+//const mode = process.env.NODE_ENV;
+let uri = '';
+
+if (process.env.NODE_ENV === "production") {
+  uri = 'mongodb://mongo:27017/reviewsDB'
+} else {
+  uri = 'mongodb://localhost/reviewsDB'
+}
+console.log('uri', uri, 'prod', process.env.NODE_ENV)
 
 mongoose.connect(uri);
 
@@ -13,7 +23,6 @@ db.once('open', () => {
 
 const reviewSchema = new mongoose.Schema({
   campId: {
-    unique: true,
     type: Number,
     sparse: true
   },
@@ -21,7 +30,7 @@ const reviewSchema = new mongoose.Schema({
   reviews: [{
     reviewId: {
       type: Number,
-      unique: true
+      sparse: true
     },
     userName: String,
     review: String,
