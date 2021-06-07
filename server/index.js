@@ -52,7 +52,7 @@ app.get('/allReviews?:campId', async (req, res) => {
   console.log('inside getall reviews', req.query);
   let campSite = Number(req.query.campId);
   let overviewData = await apis.getOverview(campSite);
-  console.log('ov', overviewData);
+  //console.log('ov', overviewData);
   db.Review.find({campId: campSite})
     .then((data) => {
       let result = {};
@@ -65,10 +65,12 @@ app.get('/allReviews?:campId', async (req, res) => {
         result.reviews = list;
         res.status(200).send(result);
       } else {
+        let ownerObj = {};
         result.recommendedPer = doc.recommendedPer;
-        result.ownerName = overviewData.name;
-        result.ownerUrl = overviewData.imageUrl;
-        result.site = overviewData.randomSite;
+        ownerObj.ownerName = overviewData.owner.name;
+        ownerObj.ownerUrl = overviewData.owner.imageUrl;
+        ownerObj.site = overviewData.location.numberOfSites;
+        result.ownerInfo = ownerObj
 
         doc.reviews.forEach((item) => {
           list.push(item._doc);

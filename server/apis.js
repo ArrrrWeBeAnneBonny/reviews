@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 let getOverview = async (id) => {
-  let url = 'http://localhost:3003/overview/owner';
+  let url = 'http://localhost:3003/overview';
   let config = {
     url: url,
     method: 'GET',
@@ -12,7 +12,7 @@ let getOverview = async (id) => {
 
   return await axios.get(url, config)
     .then((data) => {
-      console.log('got data from overview service');
+      console.log('got data from overview service', data);
       return data.data;
     });
 }
@@ -33,7 +33,7 @@ let getPhotogallery = (id) => {
     })
 }
 
-//console.log('testttt', Promise.resolve(getOverview(campId = 0)));
-//console.log(getPhotogallery(1));
+console.log('testttt', Promise.resolve(getOverview(campId = 1)));
+//console.log(getOverview(1));
 
 module.exports = {getOverview, getPhotogallery};

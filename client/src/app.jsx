@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import ReviewList from './ReviewList.jsx';
 import helpers from './helpers.js';
-//let nodeEnv = process.env.NODE_ENV;
+let nodeEnv = process.env.NODE_ENV;
 // const dotenv = require('dotenv');
 // dotenv();
 
@@ -24,34 +24,34 @@ class Reviews extends React.Component {
     let host = window.location.host;
     let index = search.indexOf('=') + 1;
     let id = search.slice(index);
-    //let url = `http://${host}/reviews`;
-    // let url = '';
+    //let url = `http://${host}/allReviews`;
+    let url = '';
 
-    // if (nodeEnv === 'development' || !nodeEnv) {
-    //   url = helpers.urls.development;
-    // } else {
-    //   url = helpers.urls.production;
-    // }
-    // console.log('url', url, 'env', nodeEnv)
+    if (nodeEnv === 'development' || !nodeEnv) {
+      url = helpers.urls.development;
+    } else {
+      url = helpers.urls.production;
+    }
+    console.log('url', url, 'env', nodeEnv)
 
     $.ajax({
-      url: 'http://ec2-54-193-152-3.us-west-1.compute.amazonaws.com/reviews',
+      url: url,
       method: 'GET',
       data: {campId: id},
       success: (data) => {
         console.log('got data in client', data);
         let reviewsList;
-        let ownerObj = {};
+        //let ownerObj = {};
         if (data) {
           reviewsList = helpers.sortReviews(data.reviews, 'Most popular');
-          ownerObj.ownerName = data.ownerName;
-          ownerObj.ownerUrl = data.ownerUrl;
-          ownerObj.site = data.site;
+          // ownerObj.ownerName = data.ownerName;
+          // ownerObj.ownerUrl = data.ownerUrl;
+          // ownerObj.site = data.site;
         }
-        console.log('sdgsdg', ownerObj);
+        //console.log('sdgsdg', ownerObj);
         this.setState({
           list: reviewsList,
-          ownerInfo: ownerObj
+          ownerInfo: data.ownerInfo
         });
         //console.log('state', this.state)
 

@@ -44,7 +44,7 @@ function ReviewList(props) {
                       </button>
                       {/* <div className='report'>Report</div> */}
                     </div>
-                      {helpers.displayOwner(props)}
+                      {helpers.displayOwner(item, props.data)}
                     <hr></hr>
                   </div>
                 </div>
