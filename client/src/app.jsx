@@ -84,6 +84,7 @@ class Reviews extends React.Component {
     //let reviews = this.state.reviews;
     //console.log('reviews', this.state.list)
     return (
+
       <div className='review'>
         <ReviewList list={this.state.list} sort={this.sortReviews} sorted={this.state.sortOption} data={this.state.ownerInfo}/>
       </div>

@@ -12,7 +12,7 @@ let getOverview = async (id) => {
 
   return await axios.get(url, config)
     .then((data) => {
-      console.log('got data from overview service', data);
+      console.log('got data from overview service');
       return data.data;
     });
 }

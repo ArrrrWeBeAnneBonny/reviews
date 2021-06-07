@@ -77,7 +77,7 @@ app.get('/allReviews?:campId', async (req, res) => {
         });
 
         result.reviews = list;
-        console.log('send', result)
+        //console.log('send', result)
         res.status(200).send(result);
 
       }

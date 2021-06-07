@@ -38,7 +38,7 @@ module.exports = {
   },
   displayOwner: (info, owner) => {
     console.log('displayowner', info)
-    if (!info.ownerResponse) {
+    if (!info.ownerResponse.response) {
       return null;
     }
     return  (
