@@ -52,7 +52,8 @@ app.get('/allReviews?:campId', async (req, res) => {
   console.log('inside getall reviews', req.query);
   let campSite = Number(req.query.campId);
   let overviewData = await apis.getOverview(campSite);
-  //console.log('ov', overviewData);
+  let photoData = await apis.getPhotogallery(campSite);
+  //console.log('ov', photoData);
   db.Review.find({campId: campSite})
     .then((data) => {
       let result = {};
@@ -60,7 +61,7 @@ app.get('/allReviews?:campId', async (req, res) => {
 
       let doc = data[0]._doc;
       //console.log('doc', Object.keys(data[0]))
-      //console.log('data', doc.reviews);
+      console.log('data', doc.reviews);
       if (doc.reviews.length === 0) {
         result.reviews = list;
         res.status(200).send(result);
@@ -73,11 +74,20 @@ app.get('/allReviews?:campId', async (req, res) => {
         result.ownerInfo = ownerObj
 
         doc.reviews.forEach((item) => {
-          list.push(item._doc);
+          console.log('ITEM', item._doc)
+          let currItem = {};
+          currItem = item._doc;
+          photoData.forEach((data) => {
+            console.log('DATA', data);
+            if (data.userName = item._doc.userName) {
+              currItem.photoInfo = data;
+            }
+          })
+          list.push(currItem);
         });
 
         result.reviews = list;
-        //console.log('send', result)
+        console.log('send', result)
         res.status(200).send(result);
 
       }

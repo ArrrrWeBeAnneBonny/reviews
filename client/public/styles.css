@@ -191,3 +191,38 @@ section {
   margin: 30px 0;
   padding-top: 16px;
 }
+
+.column {
+  float: left;
+  width: 22%;
+  height: auto;
+  padding: 5px;
+  /* border-radius: 50%; */
+  /* object-fit: cover; */
+  /* margin-right: 2.5%; */
+  margin-top: 7px;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+
+.row::after {
+  content: '';
+  /* clear: both; */
+  display: table;
+  /* border-radius: 50%;*/
+}
+
+.display-photos {
+  width: 100%;
+  float: left;
+  border-radius: 17px;
+  overflow: hidden;
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+.review_cta {
+  clear: both;
+}

@@ -29,7 +29,8 @@ let getPhotogallery = (id) => {
 
   return axios.get(url, config)
     .then((photos) => {
-      console.log('photos', photos)
+      console.log('photos');
+      return photos.data;
     })
 }
 

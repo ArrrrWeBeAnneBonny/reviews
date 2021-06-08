@@ -23,6 +23,7 @@ function ReviewList(props) {
 
         <div className='reviews_list'>
           {props.list.map((item) => {
+           // console.log('TESGSDGSDGS', item.photoInfo.)
             return (
               <div className='review' key={item.reviewId}>
                 <div className='media'>
@@ -40,7 +41,16 @@ function ReviewList(props) {
                       <div className='info-right'>{moment(item.dateCreated).format('MMMM Do YYYY')}</div>
                     </div>
                     <p>{item.review}</p>
-                    <div className='review-photo'>Photos Go Here</div>
+                    {props.list.map((photo) => {
+                      console.log('MY PHHOTOS', photo.photoInfo.imageUrl)
+                      return (
+                        <div className='row'>
+                          <div className='column'>
+                            <img className="display-photos" src={photo.photoInfo.imageUrl}></img>
+                          </div>
+                        </div>
+                      )
+                    })}
                     <div className='review_cta'>
                       <button id="button">
                         <i className={"far fa-thumbs-up"}></i> Helpful {item.helpfulness}

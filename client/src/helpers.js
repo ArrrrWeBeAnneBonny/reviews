@@ -37,7 +37,7 @@ module.exports = {
     production: `http://ec2-54-193-152-3.us-west-1.compute.amazonaws.com/allReviews`
   },
   displayOwner: (info, owner) => {
-    console.log('displayowner', info)
+    //console.log('displayowner', info)
     if (!info.ownerResponse.response) {
       return null;
     }
@@ -58,6 +58,18 @@ module.exports = {
           </div>
         </div>
       </div>
-    )
+    );
+  },
+  displayPhotos: (photoArr) => {
+    //console.log('photo urls', photoArr);
+    let photoImages = photoArr.imageUrl;
+    console.log('images', photoImages)
+    photoImages.forEach((photo) => {
+      return (
+        <div>
+        <img src={photo}></img>
+        </div>
+      )
+    })
   }
 }
