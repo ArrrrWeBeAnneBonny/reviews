@@ -29,12 +29,12 @@ let getPhotogallery = (id) => {
 
   return axios.get(url, config)
     .then((photos) => {
-      console.log('photos');
+      console.log('photos', photos.data);
       return photos.data;
     })
 }
 
 console.log('testttt', Promise.resolve(getOverview(campId = 1)));
-//console.log(getOverview(1));
+console.log(getPhotogallery(1));
 
 module.exports = {getOverview, getPhotogallery};

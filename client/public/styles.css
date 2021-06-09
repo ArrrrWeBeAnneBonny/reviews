@@ -58,7 +58,7 @@
   width: 15%;
 }
 
-img {
+.userUrl {
   border-radius: 50%;
   display: table-cell;
   vertical-align: top;
