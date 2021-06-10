@@ -66,6 +66,11 @@
   height: 75px;
 }
 
+.owner-url {
+  border-radius: 50%;
+  width: 40px;
+}
+
 .media {
   content: "";
   display: table;
@@ -215,7 +220,7 @@ section {
 .display-photos {
   width: 100%;
   float: left;
-  border-radius: 17px;
+  border-radius: 7px;
   overflow: hidden;
 }
 

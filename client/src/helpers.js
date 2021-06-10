@@ -61,15 +61,13 @@ module.exports = {
     );
   },
   displayPhotos: (photoArr) => {
-    //console.log('photo urls', photoArr);
-    let photoImages = photoArr.imageUrl;
-    console.log('images', photoImages)
-    photoImages.forEach((photo) => {
+    //console.log('photoarr', photoArr)
+    let newArr = [];
+    for (var i = 0; i < photoArr.length; i++) {
+      // console.log('each 1', photoArr[i])
       return (
-        <div>
-        <img src={photo}></img>
-        </div>
+        <img className="display-photos" src={photoArr[i]}></img>
       )
-    })
+    }
   }
 }

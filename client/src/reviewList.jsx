@@ -42,11 +42,11 @@ function ReviewList(props) {
                     </div>
                     <p>{item.review}</p>
                     {props.list.map((photo) => {
-                      console.log('MY PHHOTOS', photo.photoInfo.imageUrl)
+                      //console.log('MY PHHOTOS', photo.photoInfo.imageUrl)
                       return (
                         <div className='row'>
                           <div className='column'>
-                            <img className="display-photos" src={photo.photoInfo.imageUrl}></img>
+                            {helpers.displayPhotos(photo.photoInfo.imageUrl)}
                           </div>
                         </div>
                       )
