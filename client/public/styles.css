@@ -8,11 +8,27 @@
   flex-direction: column;
 }
 
+@media (min-width: 992px) {
+  #reviews-section {
+    width: 1080px;
+  }
+}
+
+#reviews {
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  min-height: 100vh;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .reviews {
 
-  margin-left: 400px;
-  margin-right: 1000px;
-  width: 37%;
+  width: 66%;
   margin:inherit auto;
 }
 

@@ -41,6 +41,9 @@ function ReviewList(props) {
                       <div className='info-right'>{moment(item.dateCreated).format('MMMM Do YYYY')}</div>
                     </div>
                     <p>{item.review}</p>
+                    <div id='reviews-modal'>
+
+                    </div>
                     {props.list.map((photo) => {
                       //console.log('MY PHHOTOS', photo.photoInfo.imageUrl)
                       return (
