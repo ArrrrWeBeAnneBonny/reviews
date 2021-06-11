@@ -8,6 +8,9 @@ function ReviewList(props) {
   //console.log('al', allData)
     return (
       <div id='reviews-section'>
+
+        <div className='reviews'>
+        <section></section>
         <div className='header'>{`${props.list.length} Reviews`}
         <div className='sort-right'>
           <select name='sort_by' id="sort_by" className='form-control reviews_sort-switch' value={props.sorted} onChange={props.sort}>
@@ -44,7 +47,7 @@ function ReviewList(props) {
                       </button>
                       {/* <div className='report'>Report</div> */}
                     </div>
-                      {helpers.displayOwner(props)}
+                      {helpers.displayOwner(item, props.data)}
                     <hr></hr>
                   </div>
                 </div>
@@ -52,6 +55,7 @@ function ReviewList(props) {
             )
           })}
 
+        </div>
         </div>
       </div>
     )
