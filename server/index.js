@@ -82,8 +82,13 @@ app.get('/allReviews?:campId', async (req, res) => {
             if (data.userName === item._doc.userName) {
               currItem.photoInfo = data;
               list.push(currItem);
+            } else {
+              currItem.photoInfo = data;
+              list.push(currItem);
             }
+
           });
+
         });
 
         result.reviews = list;
