@@ -53,7 +53,7 @@ app.get('/allReviews?:campId', async (req, res) => {
   let campSite = Number(req.query.campId);
   let overviewData = await apis.getOverview(campSite);
   let photoData = await apis.getPhotogallery(campSite);
-  //console.log('ov', photoData);
+  console.log('ov', overviewData);
   db.Review.find({campId: campSite})
     .then((data) => {
       let result = {};
@@ -79,15 +79,15 @@ app.get('/allReviews?:campId', async (req, res) => {
           currItem = item._doc;
           photoData.forEach((data) => {
             //console.log('DATA', data);
-            if (data.userName = item._doc.userName) {
+            if (data.userName === item._doc.userName) {
               currItem.photoInfo = data;
+              list.push(currItem);
             }
-          })
-          list.push(currItem);
+          });
         });
 
         result.reviews = list;
-        console.log('send', result)
+        //console.log('send', result)
         res.status(200).send(result);
 
       }

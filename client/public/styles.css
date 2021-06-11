@@ -216,7 +216,7 @@ section {
 .column {
   float: left;
   width: 22%;
-  height: auto;
+  height: 22%;
   padding: 5px;
   /* border-radius: 50%; */
   /* object-fit: cover; */
@@ -224,6 +224,7 @@ section {
   margin-top: 7px;
   margin-bottom: 7px;
   cursor: pointer;
+  display: flex;
 }
 
 .row::after {
@@ -234,10 +235,13 @@ section {
 }
 
 .display-photos {
-  width: 100%;
-  float: left;
+  width: 140px;
+  height: 140px;
+  /* float: left; */
+  object-fit: cover;
   border-radius: 7px;
   overflow: hidden;
+  vertical-align: middle;
 }
 
 /* * {

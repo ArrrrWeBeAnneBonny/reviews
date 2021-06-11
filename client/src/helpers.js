@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+const style = require('../public/styles.css');
 
 module.exports = {
 
